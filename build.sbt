@@ -121,7 +121,7 @@ lazy val compilerFlags = Seq(
   "-language:existentials",
   "-language:implicitConversions",
   "-Ywarn-unused",
-//  "-Xfatal-warnings",
+  // "-Xfatal-warnings",
 )
 
 def versionSpecificEnabledFlags(version: String) = (CrossVersion.partialVersion(version) match {
