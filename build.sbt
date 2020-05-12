@@ -100,6 +100,19 @@ lazy val `rho-examples` = project
       ): _*)
   .dependsOn(`rho-swagger`, `rho-swagger-ui`, `rho-hal`)
 
+lazy val `rho-benchmark` = project
+  .in(file("benchmark"))
+  .disablePlugins(MimaPlugin)
+  .settings(
+    buildSettings ++
+      Revolver.settings ++
+      Seq(
+        exampleDeps,
+        libraryDependencies ++= Seq(logbackClassic, http4sXmlInstances),
+        dontPublish
+      ): _*)
+  .dependsOn(`rho-swagger`, `rho-swagger-ui`, `rho-hal`)
+
 lazy val compilerFlags = Seq(
   "-feature",
   "-deprecation",

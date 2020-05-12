@@ -47,7 +47,12 @@ class MyRoutes[F[+_] : Effect](swaggerSyntax: SwaggerSyntax[F])
   "Two different response codes can result from this route based on the number given" **
     GET / "differentstatus" / pathVar[Int] |>> { i: Int =>
       if (i >= 0) Ok(JsonResult("Good result", i))
-      else BadRequest(s"Negative number: $i")
+      else if (i == -1) NotFound(())
+      else if (i == -2) Unauthorized(())
+      else if (i == -3) Forbidden(())
+      else if (i == -4) Accepted(())
+      else if (i == -5) NotAcceptable(())
+      else BadRequest(())
     }
 
   // Normally this would be part of the constructor since its creation is 'unsafe'
