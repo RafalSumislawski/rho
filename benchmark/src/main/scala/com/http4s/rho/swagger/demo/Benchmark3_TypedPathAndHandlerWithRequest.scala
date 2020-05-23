@@ -10,445 +10,445 @@ class Benchmark3_TypedPathAndHandlerWithRequest[F[+ _] : Effect]() extends RhoRo
   import cats.implicits._
   ().pure[F]
 
-  val _ = () => {
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    ()
-  }
-
-  val _ = () => {
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    ()
-  }
-
-  val _ = () => {
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    ()
-  }
-
-  val _ = () => {
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    ()
-  }
-
-  val _ = () => {
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    ()
-  }
-
-  val _ = () => {
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    ()
-  }
-
-  val _ = () => {
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    ()
-  }
-
-  val _ = () => {
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    ()
-  }
-
-  val _ = () => {
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    ()
-  }
-
-  val _ = () => {
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
-      Ok(s"ok $a $b $c $d $request")
-    }
-
-    ()
-  }
+//  val _ = () => {
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    ()
+//  }
+//
+//  val _ = () => {
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    ()
+//  }
+//
+//  val _ = () => {
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    ()
+//  }
+//
+//  val _ = () => {
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    ()
+//  }
+//
+//  val _ = () => {
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    ()
+//  }
+//
+//  val _ = () => {
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    ()
+//  }
+//
+//  val _ = () => {
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    ()
+//  }
+//
+//  val _ = () => {
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    ()
+//  }
+//
+//  val _ = () => {
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    ()
+//  }
+//
+//  val _ = () => {
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    GET / "a" / pv"a" / "b" / pv"b" / "c" / pv"c" / "c" / pv"d" |>> { (request: Request[F], a: String, b: String, c: String, d: String) =>
+//      Ok(s"ok $a $b $c $d $request")
+//    }
+//
+//    ()
+//  }
 }
 
 
