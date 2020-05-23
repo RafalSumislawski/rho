@@ -121,6 +121,14 @@ lazy val compilerFlags = Seq(
   "-language:existentials",
   "-language:implicitConversions",
   "-Ywarn-unused",
+  "-encoding", "UTF-8",
+  "-Xfuture",
+  "-Xlint",
+  "-Ystatistics",
+  "-P:scalac-profiling:sourceroot:D:\\wrkspc\\oss\\rho\\benchmark\\src",
+  "-P:scalac-profiling:print-failed-implicit-macro-candidates",
+  "-P:scalac-profiling:no-profiledb",
+  "-P:scalac-profiling:show-profiles"
 //  "-Xfatal-warnings",
 )
 
@@ -142,6 +150,7 @@ lazy val buildSettings = publishing ++
     scalaVersion := "2.13.1",
     crossScalaVersions := Seq(scalaVersion.value, "2.12.10"),
     scalacOptions := compilerFlags ++ versionSpecificEnabledFlags(scalaVersion.value),
+    addCompilerPlugin("io.leonard" %% "scalac-profiling" % "0.0.3"),
     resolvers += Resolver.sonatypeRepo("snapshots"),
     fork in run := true,
     organization in ThisBuild := "org.http4s",
