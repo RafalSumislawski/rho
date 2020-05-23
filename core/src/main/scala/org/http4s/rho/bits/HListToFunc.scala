@@ -5,11 +5,14 @@ import cats.Monad
 import org.http4s.rho.Action
 import shapeless.HList
 
+import scala.annotation.implicitNotFound
+
 /** Converter of an value of type F to the HList of type T
   *
  * @tparam T HList type of the incoming values
  * @tparam U type of element onto which T will be mapped
  */
+@implicitNotFound("No HListToFunc instance found. Most likely no ResultMatcher instance is available for the return type of (${FU}). This can be caused by lack of a matching EntityEncoder.")
 trait HListToFunc[F[_], T <: HList, -U] {
   def toAction(f: U): Action[F, T]
 }
