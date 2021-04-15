@@ -24,6 +24,7 @@ object Dependencies {
   lazy val shapeless           = "com.chuusai"                %% "shapeless"             % "2.3.3"
   lazy val scalaXml            = "org.scala-lang.modules"     %% "scala-xml"             % "1.3.0"
   lazy val swaggerUi           = "org.webjars"                 % "swagger-ui"            % "3.46.0"
+  lazy val swaggerify          = "io.sumislawski.swaggerify"  %% "swaggerify"            % "0.3.2"
 
   lazy val specs2              = Seq("org.specs2"              %% "specs2-core"          % specs2Version % "test",
                                      "org.specs2"              %% "specs2-scalacheck"    % specs2Version % "test" )
@@ -40,6 +41,7 @@ object Dependencies {
     scalaXml,
     swaggerCore,
     swaggerModels,
+    swaggerify,
 
     json4s % "test",
     json4sJackson % "test"
