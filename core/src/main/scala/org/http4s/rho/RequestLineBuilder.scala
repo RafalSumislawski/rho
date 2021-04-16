@@ -13,9 +13,9 @@ import shapeless.ops.hlist.Prepend
   *
   * @tparam T The `HList` representation of the values to be extracted from the `Request`.
   */
-final case class RequestLineBuilder[F[_], T <: HList](path: PathRule, rules: RequestRule[F])
+final case class RequestLineBuilder[F[_], M[_], T <: HList](path: PathRule, rules: RequestRule[F])
     extends TypedBuilder[F, T]
-    with RoutePrependable[F, RequestLineBuilder[F, T]]
+    with RoutePrependable[F, M, RequestLineBuilder[F, M, T]]
     with UriConvertible[F] {
 
   /** Prepend the prefix to the path rules
@@ -23,7 +23,7 @@ final case class RequestLineBuilder[F[_], T <: HList](path: PathRule, rules: Req
     * @param prefix The non-capturing prefix to prepend.
     * @return A [[RequestLineBuilder]] with the prefix prepended to the path rules.
     */
-  override def /:(prefix: TypedPath[F, HNil]): RequestLineBuilder[F, T] =
+  override def /:(prefix: TypedPath[F, M, HNil]): RequestLineBuilder[F, M, T] =
     copy(path = PathAnd(prefix.rule, path))
 
   /** Capture a query rule
@@ -33,6 +33,6 @@ final case class RequestLineBuilder[F[_], T <: HList](path: PathRule, rules: Req
     * @return A [[QueryBuilder]] with which to continue building the route.
     */
   def &[T1 <: HList](query: TypedQuery[F, T1])(implicit
-      prep: Prepend[T1, T]): RequestLineBuilder[F, prep.Out] =
+      prep: Prepend[T1, T]): RequestLineBuilder[F, M, prep.Out] =
     RequestLineBuilder(path, AndRule(rules, query.rule))
 }

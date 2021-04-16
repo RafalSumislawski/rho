@@ -14,8 +14,8 @@ import scala.util.control.NonFatal
 
 object PathTree {
 
-  def apply[F[_]](): PathTreeOps[F]#PathTree = {
-    val ops = new PathTreeOps[F] {}
+  def apply[F[_], M[_]](): PathTreeOps[F, M]#PathTree = {
+    val ops = new PathTreeOps[F, M] {}
     new ops.PathTree(ops.MatchNode(""))
   }
 
@@ -42,7 +42,7 @@ object PathTree {
 
 }
 
-private[rho] trait PathTreeOps[F[_]] extends RuleExecutor[F] {
+private[rho] trait PathTreeOps[F[_], M[_]] extends RuleExecutor[F] {
   /* To avoid alocating new NoMatch()s all the time. */
   private val noMatch: RouteResult[F, Nothing] = NoMatch[F]()
 
@@ -61,7 +61,7 @@ private[rho] trait PathTreeOps[F[_]] extends RuleExecutor[F] {
       * @tparam T Result type of the [[RhoRoute]].
       * @return A new [[PathTree]] containing the provided route.
       */
-    def appendRoute[T <: HList](route: RhoRoute[F, T])(implicit F: Monad[F]): PathTree = {
+    def appendRoute[T <: HList](route: RhoRoute[F, M, T])(implicit F: Monad[F]): PathTree = {
       val m = route.method
       val newLeaf = makeLeaf(route)
       val newNode = paths.append(route.path, m, newLeaf)
@@ -83,7 +83,7 @@ private[rho] trait PathTreeOps[F[_]] extends RuleExecutor[F] {
   /** Generates a list of tokens that represent the path */
   private def keyToPath(key: Request[F]): List[String] = PathTree.splitPath(key.pathInfo)
 
-  def makeLeaf[T <: HList](route: RhoRoute[F, T])(implicit F: Monad[F]): Leaf =
+  def makeLeaf[T <: HList](route: RhoRoute[F, M, T])(implicit F: Monad[F]): Leaf =
     route.router match {
       case Router(_, _, rules) =>
         Leaf { (req, pathstack) =>
@@ -199,7 +199,7 @@ private[rho] trait PathTreeOps[F[_]] extends RuleExecutor[F] {
                 case n => n
               }
               else
-                CaptureNode(p.asInstanceOf[StringParser[F, String]])
+                CaptureNode(p.asInstanceOf[StringParser[F, M, String]])
                   .append(t, method, action) :: captures
 
               clone(matches, all, variadic, end)
@@ -320,7 +320,7 @@ private[rho] trait PathTreeOps[F[_]] extends RuleExecutor[F] {
   }
 
   case class CaptureNode(
-      parser: StringParser[F, _],
+      parser: StringParser[F, M, _],
       matches: Map[String, MatchNode] = Map.empty[String, MatchNode],
       captures: List[CaptureNode] = List.empty[CaptureNode],
       variadic: Map[Method, Leaf] = Map.empty[Method, Leaf],

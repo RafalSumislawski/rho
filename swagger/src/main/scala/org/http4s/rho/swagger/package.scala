@@ -20,13 +20,13 @@ package object swagger {
       extends SecurityScopesMetaData
 
   /** Add support for adding security scopes before a route using the ^^ operator */
-  implicit class SecOps[F[_]](definitions: Map[String, List[String]]) {
-    def ^^(method: Method): PathBuilder[F, HNil] = ^^(new PathBuilder[F, HNil](method, PathEmpty))
+  implicit class SecOps[F[_], M[_]](definitions: Map[String, List[String]]) {
+    def ^^(method: Method): PathBuilder[F, M, HNil] = ^^(new PathBuilder[F, M, HNil](method, PathEmpty))
 
-    def ^^(route: RhoRoute.Tpe[F]): PathBuilder[F, HNil] =
+    def ^^(route: RhoRoute.Tpe[F, M]): PathBuilder[F, M, HNil] =
       new PathBuilder(route.method, PathAST.MetaCons(route.path, RouteSecurityScope(definitions)))
 
-    def ^^[T <: HList](builder: PathBuilder[F, T]): PathBuilder[F, T] =
+    def ^^[T <: HList](builder: PathBuilder[F, M, T]): PathBuilder[F, M, T] =
       new PathBuilder(
         builder.method,
         PathAST.MetaCons(builder.path, RouteSecurityScope(definitions))

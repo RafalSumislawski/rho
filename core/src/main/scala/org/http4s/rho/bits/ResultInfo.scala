@@ -8,6 +8,6 @@ sealed trait ResultInfo
 
 case class TypeOnly(tpe: Type) extends ResultInfo
 
-case class StatusAndType(status: Status, tpe: Type) extends ResultInfo
+case class StatusAndType[M[_]](status: Status, tpe: M[_]) extends ResultInfo
 
 case class StatusOnly(status: Status) extends ResultInfo

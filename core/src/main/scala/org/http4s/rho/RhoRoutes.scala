@@ -23,16 +23,16 @@ import shapeless.{HList, HNil}
   *
   * @param routes Routes to prepend before elements in the constructor.
   */
-class RhoRoutes[F[_]: Defer: Monad](routes: Seq[RhoRoute[F, _ <: HList]] = Vector.empty)
+class RhoRoutes[F[_]: Defer: Monad, M[_]](routes: Seq[RhoRoute[F, M, _ <: HList]] = Vector.empty)
     extends bits.MethodAliases
     with bits.ResponseGeneratorInstances[F]
-    with RoutePrependable[F, RhoRoutes[F]]
-    with RhoDsl[F] {
-  final private val routesBuilder = RoutesBuilder[F](routes)
+    with RoutePrependable[F, M, RhoRoutes[F, M]]
+    with RhoDsl[F, M] {
+  final private val routesBuilder = RoutesBuilder[F, M](routes)
 
   final protected val logger = getLogger
 
-  final implicit protected def compileRoutes: CompileRoutes[F, RhoRoute.Tpe[F]] = routesBuilder
+  final implicit protected def compileRoutes: CompileRoutes[F, M, RhoRoute.Tpe[F, M]] = routesBuilder
 
   /** Create a new [[RhoRoutes]] by appending the routes of the passed [[RhoRoutes]]
     *
@@ -40,19 +40,19 @@ class RhoRoutes[F[_]: Defer: Monad](routes: Seq[RhoRoute[F, _ <: HList]] = Vecto
     * @return A new [[RhoRoutes]] that contains the routes of the other service appended
     *         the the routes contained in this service.
     */
-  final def and(other: RhoRoutes[F]): RhoRoutes[F] = new RhoRoutes(
+  final def and(other: RhoRoutes[F, M]): RhoRoutes[F, M] = new RhoRoutes(
     this.getRoutes ++ other.getRoutes
   )
 
   /** Get a snapshot of the collection of [[RhoRoute]]'s accumulated so far */
-  final def getRoutes: Seq[RhoRoute[F, _ <: HList]] = routesBuilder.routes()
+  final def getRoutes: Seq[RhoRoute[F, M, _ <: HList]] = routesBuilder.routes()
 
   /** Convert the [[RhoRoute]]'s accumulated into a `HttpRoutes` */
-  final def toRoutes(middleware: RhoMiddleware[F] = identity): HttpRoutes[F] =
+  final def toRoutes(middleware: RhoMiddleware[F, M] = identity): HttpRoutes[F] =
     routesBuilder.toRoutes(middleware)
 
   final override def toString: String = s"RhoRoutes(${routesBuilder.routes().toString()})"
 
-  final override def /:(prefix: TypedPath[F, HNil]): RhoRoutes[F] =
+  final override def /:(prefix: TypedPath[F, M, HNil]): RhoRoutes[F, M] =
     new RhoRoutes(routesBuilder.routes().map(prefix /: _))
 }

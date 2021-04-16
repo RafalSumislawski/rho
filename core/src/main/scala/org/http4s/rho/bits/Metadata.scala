@@ -1,8 +1,6 @@
 package org.http4s
 package rho.bits
 
-import scala.reflect.runtime.universe.TypeTag
-
 /** Base type for data that can be used to decorate the rules trees
   *
   * Metadata is not directly useful for evaluating a request or for generating
@@ -22,12 +20,12 @@ trait SecurityScopesMetaData extends Metadata {
 }
 
 /** Metadata about a query rule */
-case class QueryMetaData[F[_], T](
+case class QueryMetaData[F[_], M[_], T](
     name: String,
     description: Option[String],
     p: QueryParser[F, T],
     default: Option[T],
-    m: TypeTag[T])
+    m: M[T])
     extends Metadata
 
 /** Metadata about a header rule */

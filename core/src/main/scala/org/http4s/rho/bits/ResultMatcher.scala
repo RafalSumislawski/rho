@@ -4,8 +4,6 @@ import cats.Monad
 import org.http4s.rho.Result
 import org.http4s.{EntityEncoder, MediaType, Request, Response, Status}
 
-import scala.reflect.runtime.universe.{Type, WeakTypeTag}
-
 trait ResultMatcher[F[_], -R] {
   def encodings: Set[MediaType]
   def resultInfo: Set[ResultInfo]
@@ -13,11 +11,11 @@ trait ResultMatcher[F[_], -R] {
   def conv(req: Request[F], r: R)(implicit F: Monad[F]): F[Response[F]]
 }
 
-trait ResultMatchers[F[_]] extends ResultMatcherMidPrioInstances[F] {
+trait ResultMatchers[F[_], M[_]] extends ResultMatcherMidPrioInstances[F, M] {
 
   sealed trait MaybeWritable[T] {
     def contentType: Set[MediaType]
-    def resultInfo: Option[Type]
+    def resultInfo: Option[M[_]]
     def encodings: Set[MediaType]
   }
 
@@ -26,7 +24,7 @@ trait ResultMatchers[F[_]] extends ResultMatcherMidPrioInstances[F] {
     implicit val maybeWritableAny: MaybeWritable[Any] = new MaybeWritable[Any] {
       override def contentType: Set[MediaType] = Set.empty
       override def encodings: Set[MediaType] = Set.empty
-      override def resultInfo: Option[Type] = None
+      override def resultInfo: Option[M[_]] = None
     }
   }
 
@@ -34,12 +32,12 @@ trait ResultMatchers[F[_]] extends ResultMatcherMidPrioInstances[F] {
     /* Allowing the `Writable` to be `null` only matches real results but allows for
        situations where you return the same status with two types */
     implicit def maybeIsWritable[T](implicit
-        t: WeakTypeTag[T],
+        m: M[T],
         w: EntityEncoder[F, T] = null): MaybeWritable[T] = new MaybeWritable[T] {
       private val ww = Option(w)
       override def contentType: Set[MediaType] = ww.flatMap(_.contentType.map(_.mediaType)).toSet
       override def encodings: Set[MediaType] = ww.flatMap(_.contentType.map(_.mediaType)).toSet
-      override def resultInfo: Option[Type] = Some(t.tpe.dealias)
+      override def resultInfo: Option[M[_]] = Some(m)
     }
   }
 
@@ -453,12 +451,12 @@ trait ResultMatchers[F[_]] extends ResultMatcherMidPrioInstances[F] {
     }
 
   implicit def optionMatcher[R](implicit
-      o: WeakTypeTag[R],
+      m: M[R],
       w: EntityEncoder[F, R]): ResultMatcher[F, Option[R]] = new ResultMatcher[F, Option[R]]
     with ResponseGeneratorInstances[F] {
     override val encodings: Set[MediaType] = w.contentType.map(_.mediaType).toSet
     override val resultInfo: Set[ResultInfo] =
-      Set(StatusAndType(Status.Ok, o.tpe.dealias), StatusOnly(Status.NotFound))
+      Set(StatusAndType(Status.Ok, m), StatusOnly(Status.NotFound))
 
     override def conv(req: Request[F], r: Option[R])(implicit F: Monad[F]): F[Response[F]] =
       r match {
@@ -476,7 +474,7 @@ trait ResultMatchers[F[_]] extends ResultMatcherMidPrioInstances[F] {
   }
 }
 
-trait ResultMatcherMidPrioInstances[F[_]] extends ResultMatcherLowPrioInstances[F] {
+trait ResultMatcherMidPrioInstances[F[_], M[_]] extends ResultMatcherLowPrioInstances[F, M] {
   implicit def fMatcher[R](implicit r: ResultMatcher[F, R]): ResultMatcher[F, F[R]] =
     new ResultMatcher[F, F[R]] {
       override def encodings: Set[MediaType] = r.encodings
@@ -487,13 +485,13 @@ trait ResultMatcherMidPrioInstances[F[_]] extends ResultMatcherLowPrioInstances[
     }
 }
 
-trait ResultMatcherLowPrioInstances[F[_]] {
+trait ResultMatcherLowPrioInstances[F[_], M[_]] {
   implicit def writableMatcher[R](implicit
-      o: WeakTypeTag[R],
+      m: M[R],
       w: EntityEncoder[F, R]): ResultMatcher[F, R] = new ResultMatcher[F, R]
     with ResponseGeneratorInstances[F] {
     override def encodings: Set[MediaType] = w.contentType.map(_.mediaType).toSet
-    override def resultInfo: Set[ResultInfo] = Set(StatusAndType(Status.Ok, o.tpe.dealias))
+    override def resultInfo: Set[ResultInfo] = Set(StatusAndType(Status.Ok, m))
 
     override def conv(req: Request[F], r: R)(implicit F: Monad[F]): F[Response[F]] = Ok.pure(r)
   }

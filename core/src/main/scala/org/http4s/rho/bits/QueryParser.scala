@@ -21,10 +21,10 @@ object QueryParser {
   type Params = Map[String, Seq[String]]
 }
 
-trait QueryParsers[F[_]] extends FailureResponseOps[F] {
+trait QueryParsers[F[_], M[_]] extends FailureResponseOps[F] {
 
   /** Optionally extract the value from the `Query` */
-  implicit def optionParse[A](implicit F: Monad[F], p: StringParser[F, A]) =
+  implicit def optionParse[A](implicit F: Monad[F], p: StringParser[F, M, A]) =
     new QueryParser[F, Option[A]] {
       override def collect(
           name: String,
@@ -46,7 +46,7 @@ trait QueryParsers[F[_]] extends FailureResponseOps[F] {
     */
   implicit def multipleParse[A, B[_]](implicit
       F: Monad[F],
-      p: StringParser[F, A],
+      p: StringParser[F, M, A],
       cbf: Factory[A, B[A]]) = new QueryParser[F, B[A]] {
     override def collect(
         name: String,
@@ -74,7 +74,7 @@ trait QueryParsers[F[_]] extends FailureResponseOps[F] {
   }
 
   /** Extract an element from the `Query` using a [[org.http4s.rho.bits.StringParser]] */
-  implicit def standardCollector[A](implicit F: Monad[F], p: StringParser[F, A]) =
+  implicit def standardCollector[A](implicit F: Monad[F], p: StringParser[F, M, A]) =
     new QueryParser[F, A] {
       override def collect(name: String, params: Params, default: Option[A]): ResultResponse[F, A] =
         params.get(name) match {

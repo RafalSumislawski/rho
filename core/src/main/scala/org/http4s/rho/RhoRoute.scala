@@ -8,8 +8,8 @@ import org.http4s.rho.bits.ResultInfo
 import shapeless.{HList, HNil}
 
 /** A type to bundle everything needed to define a route */
-final case class RhoRoute[F[_], T <: HList](router: RoutingEntity[F, T], action: Action[F, T])
-    extends RoutePrependable[F, RhoRoute[F, T]] {
+final case class RhoRoute[F[_], M[_], T <: HList](router: RoutingEntity[F, M, T], action: Action[F, T])
+    extends RoutePrependable[F, M, RhoRoute[F, M, T]] {
 
   /** Execute the [[RhoRoute]]
     *
@@ -24,7 +24,7 @@ final case class RhoRoute[F[_], T <: HList](router: RoutingEntity[F, T], action:
     * @param prefix non-capturing prefix to prepend
     * @return builder with the prefix prepended to the path rules
     */
-  override def /:(prefix: TypedPath[F, HNil]): RhoRoute[F, T] =
+  override def /:(prefix: TypedPath[F, M, HNil]): RhoRoute[F, M, T] =
     copy(router = prefix /: router)
 
   def method: Method = router.method
@@ -33,7 +33,7 @@ final case class RhoRoute[F[_], T <: HList](router: RoutingEntity[F, T], action:
   def responseEncodings: Set[MediaType] = action.responseEncodings
   def resultInfo: Set[ResultInfo] = action.resultInfo
   def validMedia: Set[MediaRange] = router match {
-    case r: CodecRouter[F, _, _] => r.decoder.consumes
+    case r: CodecRouter[F, M, _, _] => r.decoder.consumes
     case _ => Set.empty
   }
 }
@@ -41,5 +41,5 @@ final case class RhoRoute[F[_], T <: HList](router: RoutingEntity[F, T], action:
 object RhoRoute {
 
   /** Existentially typed [[RhoRoute]] useful when the parameters are not needed */
-  type Tpe[F[_]] = RhoRoute[F, _ <: HList]
+  type Tpe[F[_], M[_]] = RhoRoute[F, M, _ <: HList]
 }

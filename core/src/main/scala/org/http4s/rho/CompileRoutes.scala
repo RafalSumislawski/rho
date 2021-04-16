@@ -12,7 +12,7 @@ import org.http4s.rho.bits.PathTree
   * This can be a stateful operation, storing the action for later execution
   * or any other type of compilation phase.
   */
-trait CompileRoutes[F[_], RouteType] {
+trait CompileRoutes[F[_], M[_], RouteType] {
 
   /** Transform the [[RhoRoute]] into a `RouteType` possibly mutating this compilers state.
     *
@@ -20,19 +20,19 @@ trait CompileRoutes[F[_], RouteType] {
     * @tparam T `HList` representation of the result of the route
     * @return The result of the compilation process.
     */
-  def compile[T <: HList](route: RhoRoute[F, T]): RouteType
+  def compile[T <: HList](route: RhoRoute[F, M, T]): RouteType
 }
 
 object CompileRoutes {
 
   /** [[CompileRoutes]] that simply returns its argument */
-  def identityCompiler[F[_]]: CompileRoutes[F, Tpe[F]] = new CompileRoutes[F, RhoRoute.Tpe[F]] {
-    def compile[T <: HList](route: RhoRoute[F, T]): RhoRoute[F, T] = route
+  def identityCompiler[F[_], M[_]]: CompileRoutes[F, M, Tpe[F, M]] = new CompileRoutes[F, M, RhoRoute.Tpe[F, M]] {
+    def compile[T <: HList](route: RhoRoute[F, M, T]): RhoRoute[F, M, T] = route
   }
 
   /** Importable implicit identity compiler */
   object Implicit {
-    implicit def compiler[F[_]]: CompileRoutes[F, RhoRoute.Tpe[F]] = identityCompiler[F]
+    implicit def compiler[F[_], M[_]]: CompileRoutes[F, M, RhoRoute.Tpe[F, M]] = identityCompiler[F, M]
   }
 
   /** Convert the `Seq` of [[RhoRoute]]'s into a `HttpRoutes`
@@ -40,8 +40,8 @@ object CompileRoutes {
     * @param routes `Seq` of routes to bundle into a service.
     * @return An `HttpRoutes`
     */
-  def foldRoutes[F[_]: Defer: Monad](routes: Seq[RhoRoute.Tpe[F]]): HttpRoutes[F] = {
-    val tree = routes.foldLeft(PathTree[F]())((t, r) => t.appendRoute(r))
+  def foldRoutes[F[_]: Defer: Monad, M[_]](routes: Seq[RhoRoute.Tpe[F, M]]): HttpRoutes[F] = {
+    val tree = routes.foldLeft(PathTree[F, M]())((t, r) => t.appendRoute(r))
     HttpRoutes((req: Request[F]) => tree.getResult(req).toResponse)
   }
 }

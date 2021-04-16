@@ -14,17 +14,17 @@ import scala.collection.immutable.Seq
 import scala.reflect.runtime.universe._
 import scala.util.control.NonFatal
 
-private[swagger] class SwaggerModelsBuilder[F[_]](formats: SwaggerFormats)(implicit
+private[swagger] class SwaggerModelsBuilder[F[_], M[_]](formats: SwaggerFormats)(implicit
     st: ShowType,
     etag: WeakTypeTag[F[_]]) {
   import models._
 
   private[this] val logger = getLogger
 
-  def mkSwagger(rr: RhoRoute[F, _])(s: Swagger): Swagger =
+  def mkSwagger(rr: RhoRoute[F, M, _])(s: Swagger): Swagger =
     s.copy(paths = collectPaths(rr)(s), definitions = collectDefinitions(rr)(s))
 
-  def collectPaths(rr: RhoRoute[F, _])(s: Swagger): ListMap[String, Path] = {
+  def collectPaths(rr: RhoRoute[F, M, _])(s: Swagger): ListMap[String, Path] = {
     val pairs = linearizeRoute(rr).map { lr =>
       val o = mkOperation(lr)
       val p0 = s.paths.getOrElse(lr.pathString, Path())
@@ -45,7 +45,7 @@ private[swagger] class SwaggerModelsBuilder[F[_]](formats: SwaggerFormats)(impli
     pairs.foldLeft(s.paths) { case (paths, (s, p)) => paths.updated(s, p) }
   }
 
-  def collectDefinitions(rr: RhoRoute[F, _])(s: Swagger): Map[String, Model] = {
+  def collectDefinitions(rr: RhoRoute[F, M, _])(s: Swagger): Map[String, Model] = {
     val initial: Set[Model] = s.definitions.values.toSet
     (collectResultTypes(rr) ++ collectCodecTypes(rr) ++ collectQueryTypes(rr))
       .foldLeft(initial)((s, tpe) => s ++ TypeBuilder.collectModels(tpe, s, formats, etag.tpe))
@@ -53,19 +53,19 @@ private[swagger] class SwaggerModelsBuilder[F[_]](formats: SwaggerFormats)(impli
       .toMap
   }
 
-  def collectResultTypes(rr: RhoRoute[F, _]): Set[Type] =
+  def collectResultTypes(rr: RhoRoute[F, M, _]): Set[Type] =
     rr.resultInfo.collect {
       case TypeOnly(tpe) => tpe
       case StatusAndType(_, tpe) => tpe
     }
 
-  def collectCodecTypes(rr: RhoRoute[F, _]): Set[Type] =
+  def collectCodecTypes(rr: RhoRoute[F, M, _]): Set[Type] =
     rr.router match {
-      case r: CodecRouter[F, _, _] => Set(r.entityType)
+      case r: CodecRouter[F, M, _, _] => Set(r.entityType)
       case _ => Set.empty
     }
 
-  def collectQueryTypes(rr: RhoRoute[F, _]): Seq[Type] = {
+  def collectQueryTypes(rr: RhoRoute[F, M, _]): Seq[Type] = {
     def go(stack: List[RequestRule[F]]): List[Type] =
       stack match {
         case Nil => Nil
@@ -205,7 +205,7 @@ private[swagger] class SwaggerModelsBuilder[F[_]](formats: SwaggerFormats)(impli
             addOrDescriptions(set)(bs, as, "params")
 
         case MetaRule(rs, q @ QueryMetaData(_, _, _, _, _)) :: xs =>
-          mkQueryParam(q.asInstanceOf[QueryMetaData[F, _]]) :: go(rs :: xs)
+          mkQueryParam(q.asInstanceOf[QueryMetaData[F, M, _]]) :: go(rs :: xs)
 
         case MetaRule(rs, m: TextMetaData) :: xs =>
           go(rs :: Nil).map(_.withDesc(m.msg.some)) ::: go(xs)
@@ -384,7 +384,7 @@ private[swagger] class SwaggerModelsBuilder[F[_]](formats: SwaggerFormats)(impli
     code -> Response(description = descr, schema = schema)
   }
 
-  def mkQueryParam(rule: QueryMetaData[F, _]): Parameter = {
+  def mkQueryParam(rule: QueryMetaData[F, M, _]): Parameter = {
     val required = !(rule.m.tpe.isOption || rule.default.isDefined)
 
     val tpe = if (rule.m.tpe.isOption) rule.m.tpe.dealias.typeArgs.head else rule.m.tpe
@@ -508,9 +508,9 @@ private[swagger] class SwaggerModelsBuilder[F[_]](formats: SwaggerFormats)(impli
   }
 
   object LinearRoute {
-    def apply(path: List[PathOperation], rr: RhoRoute[F, _]): LinearRoute = {
+    def apply(path: List[PathOperation], rr: RhoRoute[F, M, _]): LinearRoute = {
       val entityType = rr.router match {
-        case r: CodecRouter[F, _, _] => r.entityType.some
+        case r: CodecRouter[F, M, _, _] => r.entityType.some
         case _ => none
       }
       new LinearRoute(

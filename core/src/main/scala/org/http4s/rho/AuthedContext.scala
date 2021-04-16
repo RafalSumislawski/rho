@@ -36,7 +36,7 @@ import cats.effect._
   *
   * @tparam U authInfo type for this service.
   */
-class AuthedContext[F[_]: Monad, U] extends FailureResponseOps[F] {
+class AuthedContext[F[_]: Monad, M[_], U] extends FailureResponseOps[F] {
 
   /* Attribute key to lookup authInfo in request attributeMap . */
   final private val authKey = Key.newKey[SyncIO, U].unsafeRunSync()
@@ -59,7 +59,7 @@ class AuthedContext[F[_]: Monad, U] extends FailureResponseOps[F] {
     req.attributes.lookup(authKey)
 
   /** Request matcher to capture authentication information */
-  def auth: TypedHeader[F, U :: HNil] = RhoDsl[F].genericRequestHeaderCapture[U] { req =>
+  def auth: TypedHeader[F, U :: HNil] = RhoDsl[F, M].genericRequestHeaderCapture[U] { req =>
     getAuth(req) match {
       case Some(authInfo) => SuccessResponse(authInfo)
       case None => error("Invalid auth configuration")

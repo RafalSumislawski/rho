@@ -11,18 +11,18 @@ import shapeless.HList
   * @tparam T The `HList` representation of the types the route expects to extract
   *           from a `Request`.
   */
-trait RouteExecutable[F[_], T <: HList] extends TypedBuilder[F, T] { exec =>
+trait RouteExecutable[F[_], M[_], T <: HList] extends TypedBuilder[F, T] { exec =>
 
   /** `Method` of the incoming HTTP `Request` */
   def method: Method
 
   /** Create a [[RhoRoute]] from a given [[Action]] */
-  def makeRoute(action: Action[F, T]): RhoRoute[F, T]
+  def makeRoute(action: Action[F, T]): RhoRoute[F, M, T]
 
   /** Compiles a HTTP request definition into an action */
   final def |>>[U, R](f: U)(implicit
       @nowarn("cat=unused") fpm: FuncParamsMatch[F, T, U],
       hltf: HListToFunc[F, T, U],
-      srvc: CompileRoutes[F, R]): R =
+      srvc: CompileRoutes[F, M, R]): R =
     srvc.compile(makeRoute(hltf.toAction(f)))
 }

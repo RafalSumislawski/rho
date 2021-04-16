@@ -13,29 +13,29 @@ import scala.reflect.runtime.universe._
 import scala.collection.immutable.Seq
 
 object SwaggerSupport {
-  def apply[F[_]: Sync](implicit etag: WeakTypeTag[F[_]]): SwaggerSupport[F] =
-    new SwaggerSupport[F] {}
+  def apply[F[_]: Sync, M[_]](implicit etag: WeakTypeTag[F[_]]): SwaggerSupport[F, M] =
+    new SwaggerSupport[F, M] {}
 }
 
-abstract class SwaggerSupport[F[_]](implicit F: Sync[F], etag: WeakTypeTag[F[_]])
-    extends SwaggerSyntax[F] {
+abstract class SwaggerSupport[F[_], M[_]](implicit F: Sync[F], etag: WeakTypeTag[F[_]])
+    extends SwaggerSyntax[F, M] {
 
   /** Create a RhoMiddleware adding a route to get the Swagger JSON/YAML files
     * representing the full API
     */
   def createRhoMiddleware(
       swaggerFormats: SwaggerFormats = DefaultSwaggerFormats,
-      jsonApiPath: TypedPath[F, HNil] = TypedPath(PathMatch("swagger.json")),
-      yamlApiPath: TypedPath[F, HNil] = TypedPath(PathMatch("swagger.yaml")),
+      jsonApiPath: TypedPath[F, M, HNil] = TypedPath(PathMatch("swagger.json")),
+      yamlApiPath: TypedPath[F, M, HNil] = TypedPath(PathMatch("swagger.yaml")),
       swaggerRoutesInSwagger: Boolean = false,
       swaggerMetadata: SwaggerMetadata = SwaggerMetadata(),
-      showType: ShowType = DefaultShowType): RhoMiddleware[F] = { routes =>
+      showType: ShowType = DefaultShowType): RhoMiddleware[F, M] = { routes =>
     lazy val swaggerSpec: Swagger =
       createSwagger(swaggerFormats, swaggerMetadata, showType)(
         routes ++ (if (swaggerRoutesInSwagger) swaggerRoute else Seq.empty)
       )
 
-    lazy val swaggerRoute: Seq[RhoRoute[F, _ <: HList]] =
+    lazy val swaggerRoute: Seq[RhoRoute[F, M, _ <: HList]] =
       createSwaggerRoute(swaggerSpec, jsonApiPath, yamlApiPath).getRoutes
 
     routes ++ swaggerRoute
@@ -46,9 +46,9 @@ abstract class SwaggerSupport[F[_]](implicit F: Sync[F], etag: WeakTypeTag[F[_]]
   def createSwagger(
       swaggerFormats: SwaggerFormats = DefaultSwaggerFormats,
       swaggerMetadata: SwaggerMetadata = SwaggerMetadata(),
-      showType: ShowType = DefaultShowType)(routes: Seq[RhoRoute[F, _]]): Swagger = {
+      showType: ShowType = DefaultShowType)(routes: Seq[RhoRoute[F, M, _]]): Swagger = {
 
-    val sb = new SwaggerModelsBuilder[F](swaggerFormats)(showType, etag)
+    val sb = new SwaggerModelsBuilder[F, M](swaggerFormats)(showType, etag)
     routes.foldLeft(swaggerMetadata.toSwagger())((s, r) => sb.mkSwagger(r)(s))
   }
 
@@ -56,9 +56,9 @@ abstract class SwaggerSupport[F[_]](implicit F: Sync[F], etag: WeakTypeTag[F[_]]
     */
   def createSwaggerRoute(
       swagger: => Swagger,
-      jsonApiPath: TypedPath[F, HNil] = TypedPath(PathMatch("swagger.json")),
-      yamlApiPath: TypedPath[F, HNil] = TypedPath(PathMatch("swagger.yaml"))
-  ): RhoRoutes[F] = new RhoRoutes[F] {
+      jsonApiPath: TypedPath[F, M, HNil] = TypedPath(PathMatch("swagger.json")),
+      yamlApiPath: TypedPath[F, M, HNil] = TypedPath(PathMatch("swagger.yaml"))
+  ): RhoRoutes[F, M] = new RhoRoutes[F, M] {
 
     "Swagger documentation (JSON)" ** GET / jsonApiPath |>> (() => jsonResponse)
 
